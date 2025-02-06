@@ -26,31 +26,18 @@ class Pizza:
 # Pizza("4 fromages", 8.5, ("bris", "emmental", "compté", "parnesan"))
 # pizza.print()
 
-pizzas = (
+pizzas = [
     Pizza("4 fromages", 8.5, ("bris", "emmental", "compté", "parnesan"), True),
     Pizza("Cutence Pizza", 10.5, ("farine", "fromage", "poulet", "tomates")),
-    Pizza("Cute_girl P", 12.5, ("Cho", "banane plantin", "poulet", "huile d'olive")),
+    Pizza("Cute girl P", 12.5, ("Cho", "banane plantin", "poulet", "huile d'olive")),
     Pizza("Végétarienne", 7.8, ("Champignons", "tomate", "oignons", "poivrons"), True),
 
-)
+]
+# Now let's sort pizzas, there is a problem we can't sort a tupple, so I transformed it to list
+def tri(e):
+    return e.price
 
-#Exercise print only vegetarien pizzas
-# for pizz in pizzas:
-#     if pizz.vegetarian:
-#         pizz.print()
+pizzas.sort(key=tri, reverse=True)
 
-#Exercise print only not vegetarien pizzas
-# for pizz in pizzas:
-#     if not pizz.vegetarian:
-#         pizz.print()
-
-#Exercise print only pizzas with tomatos
-#I have a point with this instruction even if an element have "tomates" with the 's' will not be printed
-# for pizz in pizzas:
-#     if "tomate" in pizz.ingredients:
-#         pizz.print()
-
-# Now if the pizza price < 10 euro
 for pizz in pizzas:
-    if pizz.price < 10 :
-        pizz.print()
+    pizz.print()
