@@ -7,13 +7,13 @@ class Pizza:
         self.name = name
         self.price = price
         self.ingredients = ingredients
-        self.vegetarien = vegetarian
+        self.vegetarian = vegetarian
 
 
 
     def print(self):
         veg_str = ""
-        if self.vegetarien:
+        if self.vegetarian:
             veg_str = "- VEGETARIAN"
             #print(f"PIZZA {self.name} : {self.price} euros - VEGETARIAN")
         # else:
@@ -34,6 +34,23 @@ pizzas = (
 
 )
 
-for pizz in pizzas:
-    pizz.print()
+#Exercise print only vegetarien pizzas
+# for pizz in pizzas:
+#     if pizz.vegetarian:
+#         pizz.print()
 
+#Exercise print only not vegetarien pizzas
+# for pizz in pizzas:
+#     if not pizz.vegetarian:
+#         pizz.print()
+
+#Exercise print only pizzas with tomatos
+#I have a point with this instruction even if an element have "tomates" with the 's' will not be printed
+# for pizz in pizzas:
+#     if "tomate" in pizz.ingredients:
+#         pizz.print()
+
+# Now if the pizza price < 10 euro
+for pizz in pizzas:
+    if pizz.price < 10 :
+        pizz.print()
