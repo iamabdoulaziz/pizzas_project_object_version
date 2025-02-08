@@ -26,9 +26,11 @@ class Pizza:
 class PersonalizedPizza(Pizza):
     BASIC_PRICE = 7
     PRICE_PER_INGREDIENT = 1.2
-    def __init__(self, pizza_number):
-        self.pizza_number = pizza_number
-        super().__init__("Personnalisée", 0, [])
+    LAST_NUMBER = 0
+    def __init__(self):
+        PersonalizedPizza.LAST_NUMBER += 1
+        self.pizza_number = PersonalizedPizza.LAST_NUMBER
+        super().__init__(f"Personnalisée {self.pizza_number}", 0, [])
         self.ask_ingredients_to_user()
         self.calculate_price()
         #self.price = self.calculate_price()
@@ -59,8 +61,8 @@ pizzas = [
     Pizza("Cutence Pizza", 10.5, ("farine", "fromage", "poulet", "tomates")),
     Pizza("Cute girl P", 12.5, ("Cho", "banane plantin", "poulet", "huile d'olive")),
     Pizza("Végétarienne", 7.8, ("Champignons", "tomate", "oignons", "poivrons"), True),
-    PersonalizedPizza(1),
-    PersonalizedPizza(2)
+    PersonalizedPizza(),
+    PersonalizedPizza()
 ]
 # Now let's sort pizzas, there is a problem we can't sort a tupple, so I transformed it to list
 def tri(e):
