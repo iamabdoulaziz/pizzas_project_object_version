@@ -23,6 +23,34 @@ class Pizza:
         print()
 
 
+class PersonalizedPizza(Pizza):
+    BASIC_PRICE = 7
+    PRICE_PER_INGREDIENT = 1.2
+    def __init__(self, pizza_number):
+        self.pizza_number = pizza_number
+        super().__init__("Personnalisée", 0, [])
+        self.ask_ingredients_to_user()
+        self.calculate_price()
+        #self.price = self.calculate_price()
+
+    def ask_ingredients_to_user(self):
+        print("---")
+        print(f"Ingredients pour la pizza personnalisée {self.pizza_number}")
+        while True:
+            ingredient = input("Ajoute un ingrédient (ou ENTER pour terminer) : ")
+            if ingredient == "":
+                return
+            self.ingredients.append(ingredient)
+            print(f"Tu as ajouté {len(self.ingredients)} ingrédients.s : {",".join(self.ingredients)}")
+            #self.calculate_price()
+            print()
+
+    def calculate_price(self):
+        #print(f"Prix de base = {self.BASIC_PRICE} euros")
+        self.price = self.BASIC_PRICE + (self.PRICE_PER_INGREDIENT * len(self.ingredients))
+        #calcule = self.BASIC_PRICE + (self.PRICE_PER_INGREDIENT*len(self.ingredients))
+        #print(f"Le prix après ajout des ingrdients : {calcule} euros")
+        #return calcule
 # Pizza("4 fromages", 8.5, ("bris", "emmental", "compté", "parnesan"))
 # pizza.print()
 
@@ -31,13 +59,14 @@ pizzas = [
     Pizza("Cutence Pizza", 10.5, ("farine", "fromage", "poulet", "tomates")),
     Pizza("Cute girl P", 12.5, ("Cho", "banane plantin", "poulet", "huile d'olive")),
     Pizza("Végétarienne", 7.8, ("Champignons", "tomate", "oignons", "poivrons"), True),
-
+    PersonalizedPizza(1),
+    PersonalizedPizza(2)
 ]
 # Now let's sort pizzas, there is a problem we can't sort a tupple, so I transformed it to list
 def tri(e):
     return e.price
 
-pizzas.sort(key=tri, reverse=True)
+#pizzas.sort(key=tri, reverse=True)
 
 for pizz in pizzas:
     pizz.print()
